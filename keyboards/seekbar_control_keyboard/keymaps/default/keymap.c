@@ -20,6 +20,13 @@ tap_dance_action_t tap_dance_actions[] = {
     [TD_BACK_PREV]  = ACTION_TAP_DANCE_DOUBLE(KC_MEDIA_REWIND, KC_MEDIA_PREV_TRACK),
 };
 
+#if defined(ENCODER_MAP_ENABLE)
+const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
+    [LAY_BASIC] = { ENCODER_CCW_CW(KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP) },
+    [LAY_FN] = { ENCODER_CCW_CW(KC_TRNS, KC_TRNS) },
+};
+#endif
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /*
      * ┌───┬───┬───┐
@@ -38,13 +45,3 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     )
 };
 
-bool encoder_update_user(uint8_t index, bool clockwise) {
-    if (index == 0) { /* First encoder */
-        if (clockwise) {
-            tap_code(KC_AUDIO_VOL_UP);
-        } else {
-            tap_code(KC_AUDIO_VOL_DOWN);
-        }
-    }
-    return false;
-}
