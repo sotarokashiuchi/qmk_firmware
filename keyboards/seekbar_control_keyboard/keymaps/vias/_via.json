@@ -1,0 +1,12 @@
+{
+  "name": "seekbar_control_keyboard",
+  "vendorId": "0x0125",
+  "productId": "0x0001",
+  "matrix": { "rows": 2, "cols": 3 },
+  "layouts": {
+    "keymap": [
+        [{"c":"#cccccc"},"0,0","0,1","0,2"],
+        ["1,0\n\n\n\n\n\n\n\n\ne0","1,1","1,2"]
+    ]
+  }
+}
